@@ -33,5 +33,19 @@ def generate_password(min_length, numbers=True, special_characters=True):
             meets_criteria = has_special and meets_criteria
     return password
 
+min_length = 0
+while min_length <= 0:
+    try:
+        min_length = int(input("Enter the minimum length of the password: "))
+        if min_length <= 0:
+            raise ValueError
+    except ValueError:
+        print("Please enter a number that is greater than zero.")
+    
+    
+has_numbers = input("Do you want numbers in your password? (y/n): ").lower() == "y"
+has_special_characters = input("Do you want special characters in your password? (y/n): ").lower() == "y"
 
 
+password = generate_password(min_length, has_numbers, has_special_characters)
+print("The generated password is:", password)
